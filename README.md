@@ -70,12 +70,18 @@ python build_macos.py
 
 **macOS (.pkg erstellen):**
 ```bash
-# Nach PyInstaller Build
-pkgbuild --root dist/Benutzerverwaltung-Tray.app \
-         --identifier com.example.benutzerverwaltung-tray \
-         --version 1.0 \
-         --install-location /Applications \
-         Benutzerverwaltung-Tray.pkg
+# 1. Icon im ICNS-Format erstellen
+mkdir -p icons/icon.iconset
+cp icons/icon_modern_16x16.png icons/icon.iconset/icon_16x16.png
+cp icons/icon_modern_32x32.png icons/icon.iconset/icon_32x32.png
+cp icons/icon_modern_64x64.png icons/icon.iconset/icon_64x64.png
+iconutil -c icns icons/icon.iconset -o icons/icon_modern.icns
+
+# 2. PyInstaller Build mit korrektem Icon
+pyinstaller Benutzerverwaltung.spec
+
+# 3. PKG Installer erstellen
+productbuild --component dist/Benutzerverwaltung-Tray.app /Applications Benutzerverwaltung-Tray.pkg
 ```
 
 **Windows (.msi erstellen):**
