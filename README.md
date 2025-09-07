@@ -110,7 +110,7 @@ Siehe detaillierte Anleitung in:
 ## 📁 Projektstruktur
 
 ```
-├── app.py                   # Hauptanwendung mit System Tray Support
+├── app.py                   # Hauptanwendung (Standard & Tray Support)
 ├── requirements.txt         # Python Dependencies  
 ├── Benutzerverwaltung.spec  # PyInstaller Konfiguration (Standard)
 ├── Benutzerverwaltung-Tray.spec # PyInstaller Konfiguration (Tray)
