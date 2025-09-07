@@ -22,45 +22,29 @@ Eine einfache Benutzerverwaltung mit Flask Backend und Web-Frontend, verpackt al
 ### 📦 Fertige Downloads (v1.0.0)
 
 **macOS (sofort einsatzbereit):**
-- 🔗 [**Benutzerverwaltung-Tray.dmg**](https://github.com/ghaslbe/flask-react-windows-macos-app/releases/latest/download/Benutzerverwaltung-Tray.dmg) ⭐ **EMPFOHLEN** (Tray-Version)
-- 🔗 [Benutzerverwaltung.dmg](https://github.com/ghaslbe/flask-react-windows-macos-app/releases/latest/download/Benutzerverwaltung.dmg) (Standard-Version)
+- 🔗 [**Benutzerverwaltung-Tray.dmg**](https://github.com/ghaslbe/flask-react-windows-macos-app/releases/latest/download/Benutzerverwaltung-Tray.dmg) ⭐ **Standard-Version mit Tray-Icon**
 
 **Windows:**
 - 📁 Repository clonen und mit Build-Scripts erstellen (siehe unten)
 
 ## 🎯 Installation
 
-### Standard Version (unsichtbar im Hintergrund)
 **Windows:**
-1. `Benutzerverwaltung.exe` herunterladen
-2. Doppelklick → fertig!
-
-**macOS:**
-1. `Benutzerverwaltung.dmg` herunterladen  
-2. DMG mounten → App zu Applications ziehen
-3. Doppelklick → fertig!
-
-### Tray Version (mit Taskleisten-Icon) 🆕
-**Windows:**
-1. `Benutzerverwaltung-Tray.exe` herunterladen
-2. Doppelklick → Icon erscheint in der Taskleiste
+1. Repository clonen und mit Build-Scripts erstellen
+2. `Benutzerverwaltung-Tray.exe` ausführen → Icon erscheint in der Taskleiste
 
 **macOS:**
 1. `Benutzerverwaltung-Tray.dmg` herunterladen
-2. App installieren → Icon erscheint in der Menüleiste
+2. DMG mounten → App zu Applications ziehen
+3. Doppelklick → Icon erscheint in der Menüleiste
 
-### 🤔 Warum läuft die App "unsichtbar"?
+### 🤔 Wie funktioniert die App?
 
-**Bei der Standard-Version:**
-- ✅ App läuft als **Background-Prozess**
-- ❌ **Kein Fenster** oder Dock-Icon sichtbar
-- 🌐 **Browser öffnet automatisch** für die Bedienung
-- 🔍 **Sichtbar in:** Aktivitätsanzeige (macOS) / Task-Manager (Windows)
-
-**Bei der Tray-Version:**
+**Standard-Version mit Tray-Icon:**
 - ✅ **System Tray Icon** (Windows Taskleiste / macOS Menüleiste)
 - 🖱️ **Rechtsklick** für Optionen-Menü
 - 🚀 **App öffnen**, **Datenordner** anzeigen, **Beenden**
+- 🌐 **Browser öffnet automatisch** für die Bedienung
 
 **Daten werden gespeichert in:**
 - Windows: `%USERPROFILE%\Documents\Benutzerverwaltung\`
@@ -72,9 +56,8 @@ Eine einfache Benutzerverwaltung mit Flask Backend und Web-Frontend, verpackt al
 
 **Build für macOS:**
 ```bash
-
-# Tray Version
-pyinstaller Benutzerverwaltung-Tray.spec
+# Standard Version (mit Tray-Icon)
+pyinstaller Benutzerverwaltung.spec
 
 # DMG erstellen (optional)
 python build_macos.py
@@ -129,8 +112,7 @@ Siehe detaillierte Anleitung in:
 ```
 ├── app.py                   # Hauptanwendung (Standard & Tray Support)
 ├── requirements.txt         # Python Dependencies  
-├── Benutzerverwaltung.spec  # PyInstaller Konfiguration (Standard)
-├── Benutzerverwaltung-Tray.spec # PyInstaller Konfiguration (Tray)
+├── Benutzerverwaltung.spec  # PyInstaller Konfiguration (Standard mit Tray-Icon)
 ├── build_macos.py          # macOS Build Script
 ├── create_icons.py         # Icon-Generator
 ├── test_app.py             # Tests

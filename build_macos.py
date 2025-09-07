@@ -10,7 +10,7 @@ def build_macos_app_with_tray():
         'app.py',
         '--onefile',
         '--windowed',  # No terminal window
-        '--name=Benutzerverwaltung',
+        '--name=Benutzerverwaltung-Tray',
         '--hidden-import=sqlite3',
         '--hidden-import=uuid',
         '--hidden-import=threading',
@@ -33,7 +33,7 @@ def build_macos_app_with_tray():
         PyInstaller.__main__.run(args)
         print("\n✓ macOS application with System Tray built successfully!")
         print("You can find the application in the 'dist' folder")
-        print("File: dist/Benutzerverwaltung.app")
+        print("File: dist/Benutzerverwaltung-Tray.app")
         print("\nFeatures:")
         print("- System Tray Icon (Rechtsklick für Menü)")
         print("- Browser öffnet automatisch")
