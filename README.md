@@ -85,6 +85,25 @@ python build_macos.py
 **Build für Windows:**
 - Mit entsprechender .spec Datei und PyInstaller
 
+### Installer-Pakete erstellen
+
+**macOS (.pkg erstellen):**
+```bash
+# Nach PyInstaller Build
+pkgbuild --root dist/Benutzerverwaltung-Tray.app \
+         --identifier com.example.benutzerverwaltung-tray \
+         --version 1.0 \
+         --install-location /Applications \
+         Benutzerverwaltung-Tray.pkg
+```
+
+**Windows (.msi erstellen):**
+```bash
+# WiX Toolset erforderlich
+candle installer.wxs
+light -ext WixUIExtension installer.wixobj -out Benutzerverwaltung.msi
+```
+
 ### Voraussetzungen
 - Python 3.8+
 - pip
