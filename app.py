@@ -271,9 +271,31 @@ HTML_TEMPLATE = '''
             color: #721c24;
             border: 1px solid #f5c6cb;
         }
+        .connection-warning {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #dc3545;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            z-index: 9999;
+            display: none;
+        }
+        .connection-warning.show {
+            display: block;
+        }
+        body.connection-lost {
+            margin-top: 60px;
+        }
     </style>
 </head>
 <body>
+    <div id="connection-warning" class="connection-warning">
+        ⚠️ Verbindung zum Server verloren! Die Anwendung wurde möglicherweise beendet.
+    </div>
     <div id="root">
         <div class="container">
             <div class="header">
@@ -442,6 +464,42 @@ HTML_TEMPLATE = '''
         
         // Load users on page load
         fetchUsers();
+        
+        // Connection monitoring
+        let connectionLost = false;
+        
+        function checkConnection() {
+            fetch('/api/health')
+                .then(response => {
+                    if (response.ok) {
+                        if (connectionLost) {
+                            // Connection restored
+                            document.getElementById('connection-warning').classList.remove('show');
+                            document.body.classList.remove('connection-lost');
+                            connectionLost = false;
+                        }
+                    } else {
+                        showConnectionWarning();
+                    }
+                })
+                .catch(error => {
+                    showConnectionWarning();
+                });
+        }
+        
+        function showConnectionWarning() {
+            if (!connectionLost) {
+                document.getElementById('connection-warning').classList.add('show');
+                document.body.classList.add('connection-lost');
+                connectionLost = true;
+            }
+        }
+        
+        // Start heartbeat check every 5 seconds
+        setInterval(checkConnection, 5000);
+        
+        // Initial connection check
+        checkConnection();
     </script>
 </body>
 </html>
@@ -501,6 +559,11 @@ def delete_user(user_id):
         return jsonify({'error': 'Benutzer nicht gefunden'}), 404
     
     return jsonify({'message': 'Benutzer gelöscht'})
+
+@app.route('/api/health', methods=['GET'])
+def health_check():
+    """Health check endpoint for frontend connectivity monitoring"""
+    return jsonify({'status': 'ok', 'message': 'Backend is running'})
 
 def create_tray_icon():
     """Load custom icon for the system tray"""
