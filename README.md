@@ -1,5 +1,8 @@
 # flask-react-windows-macos-app
 
+[![GitHub release](https://img.shields.io/github/v/release/ghaslbe/flask-react-windows-macos-app)](https://github.com/ghaslbe/flask-react-windows-macos-app/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/ghaslbe/flask-react-windows-macos-app/total)](https://github.com/ghaslbe/flask-react-windows-macos-app/releases)
+
 🚀 **Benutzerverwaltung als Standalone-App für Windows & macOS**
 
 Eine einfache Benutzerverwaltung mit Flask Backend und Web-Frontend, verpackt als eigenständige Anwendung für Windows (.exe) und macOS (.dmg).
@@ -15,6 +18,17 @@ Eine einfache Benutzerverwaltung mit Flask Backend und Web-Frontend, verpackt al
 - 🔄 **Auto-Start**: Browser öffnet automatisch
 
 ## 🎯 Für Endnutzer
+
+### 📦 Fertige Downloads (v1.0.0)
+
+**macOS (sofort einsatzbereit):**
+- 🔗 [**Benutzerverwaltung-Tray.dmg**](https://github.com/ghaslbe/flask-react-windows-macos-app/releases/latest/download/Benutzerverwaltung-Tray.dmg) ⭐ **EMPFOHLEN** (Tray-Version)
+- 🔗 [Benutzerverwaltung.dmg](https://github.com/ghaslbe/flask-react-windows-macos-app/releases/latest/download/Benutzerverwaltung.dmg) (Standard-Version)
+
+**Windows:**
+- 📁 Repository clonen und mit Build-Scripts erstellen (siehe unten)
+
+## 🎯 Installation
 
 ### Standard Version (unsichtbar im Hintergrund)
 **Windows:**
