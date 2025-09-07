@@ -72,8 +72,6 @@ Eine einfache Benutzerverwaltung mit Flask Backend und Web-Frontend, verpackt al
 
 **Build für macOS:**
 ```bash
-# Standard Version
-pyinstaller Benutzerverwaltung.spec
 
 # Tray Version
 pyinstaller Benutzerverwaltung-Tray.spec
