@@ -16,14 +16,37 @@ Eine einfache Benutzerverwaltung mit Flask Backend und Web-Frontend, verpackt al
 
 ## 🎯 Für Endnutzer
 
-### Windows
+### Standard Version (unsichtbar im Hintergrund)
+**Windows:**
 1. `Benutzerverwaltung.exe` herunterladen
 2. Doppelklick → fertig!
 
-### macOS  
-1. `Benutzerverwaltung.dmg` herunterladen
+**macOS:**
+1. `Benutzerverwaltung.dmg` herunterladen  
 2. DMG mounten → App zu Applications ziehen
 3. Doppelklick → fertig!
+
+### Tray Version (mit Taskleisten-Icon) 🆕
+**Windows:**
+1. `Benutzerverwaltung-Tray.exe` herunterladen
+2. Doppelklick → Icon erscheint in der Taskleiste
+
+**macOS:**
+1. `Benutzerverwaltung-Tray.dmg` herunterladen
+2. App installieren → Icon erscheint in der Menüleiste
+
+### 🤔 Warum läuft die App "unsichtbar"?
+
+**Bei der Standard-Version:**
+- ✅ App läuft als **Background-Prozess**
+- ❌ **Kein Fenster** oder Dock-Icon sichtbar
+- 🌐 **Browser öffnet automatisch** für die Bedienung
+- 🔍 **Sichtbar in:** Aktivitätsanzeige (macOS) / Task-Manager (Windows)
+
+**Bei der Tray-Version:**
+- ✅ **System Tray Icon** (Windows Taskleiste / macOS Menüleiste)
+- 🖱️ **Rechtsklick** für Optionen-Menü
+- 🚀 **App öffnen**, **Datenordner** anzeigen, **Beenden**
 
 **Daten werden gespeichert in:**
 - Windows: `%USERPROFILE%\Documents\Benutzerverwaltung\`
@@ -33,16 +56,13 @@ Eine einfache Benutzerverwaltung mit Flask Backend und Web-Frontend, verpackt al
 
 ### Schnellstart
 
-**Windows:**
-```cmd
-build_all.bat
-```
+**Standard Version:**
+- Windows: `build_all.bat`
+- macOS: `python build_macos.py && python create_dmg.py`
 
-**macOS:**
-```bash
-python build_macos.py
-python create_dmg.py
-```
+**Tray Version (mit Taskleisten-Icon):**
+- Windows: `python build_windows_tray.py`
+- macOS: `python build_macos_tray.py && python create_dmg.py`
 
 ### Voraussetzungen
 - Python 3.8+
@@ -69,10 +89,13 @@ Siehe detaillierte Anleitung in:
 ## 📁 Projektstruktur
 
 ```
-├── app_exe.py              # Hauptanwendung
+├── app_exe.py              # Hauptanwendung (Standard)
+├── app_with_tray.py        # Hauptanwendung (mit System Tray) 🆕
 ├── requirements.txt        # Python Dependencies  
-├── build_exe.py           # Windows Build
-├── build_macos.py         # macOS Build
+├── build_exe.py           # Windows Build (Standard)
+├── build_windows_tray.py   # Windows Build (Tray) 🆕
+├── build_macos.py         # macOS Build (Standard)
+├── build_macos_tray.py    # macOS Build (Tray) 🆕
 ├── create_dmg.py          # DMG Erstellung
 ├── build_all.bat          # Windows Auto-Build
 ├── test_app.py            # Tests

@@ -11,7 +11,7 @@ def build_exe():
         '--onefile',
         '--windowed',  # No console window
         '--name=Benutzerverwaltung',
-        '--icon=NONE',
+        '--icon=icons/icon_modern.ico' if os.path.exists('icons/icon_modern.ico') else '--icon=NONE',
         '--add-data=users.db;.' if os.path.exists('users.db') else '',
         '--hidden-import=sqlite3',
         '--hidden-import=uuid',
