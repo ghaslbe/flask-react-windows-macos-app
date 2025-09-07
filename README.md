@@ -70,13 +70,20 @@ Eine einfache Benutzerverwaltung mit Flask Backend und Web-Frontend, verpackt al
 
 ### Schnellstart
 
-**Standard Version:**
-- Windows: `build_all.bat`
-- macOS: `python build_macos.py && python create_dmg.py`
+**Build für macOS:**
+```bash
+# Standard Version
+pyinstaller Benutzerverwaltung.spec
 
-**Tray Version (mit Taskleisten-Icon):**
-- Windows: `python build_windows_tray.py`
-- macOS: `python build_macos_tray.py && python create_dmg.py`
+# Tray Version
+pyinstaller Benutzerverwaltung-Tray.spec
+
+# DMG erstellen (optional)
+python build_macos.py
+```
+
+**Build für Windows:**
+- Mit entsprechender .spec Datei und PyInstaller
 
 ### Voraussetzungen
 - Python 3.8+
@@ -91,7 +98,7 @@ pip install -r requirements.txt
 
 ### Entwicklung
 ```bash
-python app_exe.py
+python app.py
 ```
 → Browser öffnet sich auf http://127.0.0.1:5000
 
@@ -103,17 +110,15 @@ Siehe detaillierte Anleitung in:
 ## 📁 Projektstruktur
 
 ```
-├── app_exe.py              # Hauptanwendung (Standard)
-├── app_with_tray.py        # Hauptanwendung (mit System Tray) 🆕
-├── requirements.txt        # Python Dependencies  
-├── build_exe.py           # Windows Build (Standard)
-├── build_windows_tray.py   # Windows Build (Tray) 🆕
-├── build_macos.py         # macOS Build (Standard)
-├── build_macos_tray.py    # macOS Build (Tray) 🆕
-├── create_dmg.py          # DMG Erstellung
-├── build_all.bat          # Windows Auto-Build
-├── test_app.py            # Tests
-└── dist/                  # Build-Ergebnisse
+├── app.py                   # Hauptanwendung mit System Tray Support
+├── requirements.txt         # Python Dependencies  
+├── Benutzerverwaltung.spec  # PyInstaller Konfiguration (Standard)
+├── Benutzerverwaltung-Tray.spec # PyInstaller Konfiguration (Tray)
+├── build_macos.py          # macOS Build Script
+├── create_icons.py         # Icon-Generator
+├── test_app.py             # Tests
+├── icons/                  # App-Icons (verschiedene Formate)
+└── dist/                   # Build-Ergebnisse
 ```
 
 ## 🔧 Technische Details
