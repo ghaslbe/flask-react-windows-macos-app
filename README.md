@@ -59,8 +59,8 @@ Eine einfache Benutzerverwaltung mit Flask Backend und Web-Frontend, verpackt al
 # Standard Version (mit Tray-Icon)
 pyinstaller Benutzerverwaltung.spec
 
-# DMG erstellen (optional)
-python build_macos.py
+# DMG erstellen
+python create_dmg.py
 ```
 
 **Build für Windows:**
@@ -68,7 +68,7 @@ python build_macos.py
 
 ### Installer-Pakete erstellen
 
-**macOS (.pkg erstellen):**
+**macOS (.dmg erstellen):**
 ```bash
 # 1. Icon im ICNS-Format erstellen
 mkdir -p icons/icon.iconset
@@ -80,8 +80,8 @@ iconutil -c icns icons/icon.iconset -o icons/icon_modern.icns
 # 2. PyInstaller Build mit korrektem Icon
 pyinstaller Benutzerverwaltung.spec
 
-# 3. PKG Installer erstellen
-productbuild --component dist/Benutzerverwaltung-Tray.app /Applications Benutzerverwaltung-Tray.pkg
+# 3. DMG Installer erstellen
+python create_dmg.py
 ```
 
 **Windows (.msi erstellen):**
